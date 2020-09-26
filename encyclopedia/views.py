@@ -1,3 +1,4 @@
+import markdown2
 from django.shortcuts import render
 
 from . import util
@@ -9,6 +10,10 @@ def index(request):
     })
 
 def display_page(request, title):
-    return render(request, "encyclopedia/page.html", {
-        "entry": util.get_entry(title), "title": title
-    })
+    if not util.get_entry(title):
+        return render(request, "encyclopedia/notfound.html", {"title": title
+        })
+    else:    
+        return render(request, "encyclopedia/page.html", {
+            "entry": markdown2.markdown(util.get_entry(title)), "title": title
+        })

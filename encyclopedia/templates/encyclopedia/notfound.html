@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Not Found
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="container d-flex justify-content-center">
+    <div class="row align-items-center">
+        <div class="alert alert-warning text-center" role="alert"> 
+            <span class="align-middle"><strong>ERROR: </strong>The page for {{ title.capitalize }} does not exist. Would you like to create it?</span>
+        </div>
+    </div>    
+</div>    
+{% endblock %}
