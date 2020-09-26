@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+    <br>
+<div class="container d-flex justify-content-center">
+    <div class="row align-items-center">
+        <div class="alert alert-warning text-center" role="alert"> 
+            <span class="align-middle"><strong>ERROR: </strong>The page for {{ title.capitalize }} already exists. Please edit that page instead.</span>
+        </div>
+    </div>    
+</div>
+{% endif %}    
+    <h1>Create a New Page</h1>
+
+    <form action="{% url 'newpage' %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" Value="Submit">
+    </form>
+{% endblock %}

@@ -5,6 +5,16 @@
 {% endblock %}
 
 {% block body %}
+{% if success%}
+<br>
+<div class="container d-flex justify-content-center">
+    <div class="row align-items-center">
+        <div class="alert alert-success text-center" role="alert"> 
+            <span class="align-middle"><strong>SUCCESS!: </strong>The page for {{ title.capitalize }} was created successfully.</span>
+        </div>
+    </div>    
+</div>
+{% endif %}
     <h1>All Pages</h1>
 
     <ul>
