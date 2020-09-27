@@ -5,7 +5,15 @@
 {% endblock %}
 
 {% block body %}
-<div id="text"> 
+<div id="text" class="container"> 
     {{ entry | safe }}
+</div>
+
+<br>
+
+<div class="container">
+    <form action="{% url 'edit' title %}" method="get">
+        <input type="submit" value="Edit This Page">
+    </form>    
 </div>
 {% endblock %}

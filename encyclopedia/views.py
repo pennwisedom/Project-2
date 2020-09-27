@@ -90,3 +90,20 @@ def new_page(request):
                 util.save_entry(title, body)
                 success = True
                 return render(request, "encyclopedia/index.html", {"success": success, "title": title, "entries": util.list_entries()})
+
+# Edits an already existing page.
+def edit(request, title):
+    if request.method == "POST":
+        form = NewPageForm(request.POST)
+        
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            body = form.cleaned_data["body"]
+            util.save_entry(title, body)
+            return redirect(display_page, title=title)
+
+    
+    else:
+        return render(request, "encyclopedia/edit.html", {"title": title, "form": NewPageForm({"title": title,
+            "body": util.get_entry(title)})
+        })
